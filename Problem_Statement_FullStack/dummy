@@ -1,0 +1,35 @@
+async function dataShow(url) {
+     fetch(url).then(res => res.json())
+                .then(
+                    data => {
+                        // if (data.length > 0) {
+                            var temp = "";
+                            data.forEach(function (itemData) {
+                                console.log(JSON.stringify(itemData));
+                                // temp += "<tr>";
+                                // temp += "<td>" + itemData.name + "</td>";
+                                // temp += "<td>" + itemData.email + "</td>";
+                                // temp += "<td>" + itemData.number + "</td>";
+                                // // temp += "<td>" + `<button onclick='changePassBtnClick($itemData)'>Reset Password</button>` + "</td>";
+                                // temp += "<td>" + `<button onclick ='changePassBtnClick(${itemData});'>Reset Password</button>` + "</td>";
+                                // // temp += "<tr>";
+                                // temp += "</tr>";
+                                document.getElementById('data').innerHTML += `
+                                <tr>
+                                    <td>${itemData.name}</td>
+                                    <td>${itemData.email}</td>
+                                    <td>${itemData.number}</td>
+                                    <td>
+                                    <button class="btn btn-warning" onclick ='changePassBtnClick(${itemData});'>Reset Passowrd</button>
+                                    </td>
+                                </tr>
+                                `
+                            }
+                            );
+                            // document.getElementById('data').innerHTML = temp;
+                        }
+                    // }
+                )
+}
+
+// dataShow("http://localhost:3000/api/getalluser" );
